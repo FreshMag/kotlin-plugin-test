@@ -1,3 +1,3 @@
-# kotlin-ir-plugin-template
+# Kotlin Plugin Test
 
-Template project for building Kotlin compiler plugins using IR.
+Experiments made with Kotlin compiler plugins 
