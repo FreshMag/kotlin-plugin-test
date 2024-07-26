@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.unibo.plugintest
+package org.unibo.plugintest.template
 
 import org.jetbrains.kotlin.backend.common.extensions.IrGenerationExtension
 import org.jetbrains.kotlin.backend.common.extensions.IrPluginContext
