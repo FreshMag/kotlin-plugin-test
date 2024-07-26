@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bnorm.template
+package org.unibo.plugintest
 
 import org.gradle.api.Project
 import org.gradle.api.provider.Provider

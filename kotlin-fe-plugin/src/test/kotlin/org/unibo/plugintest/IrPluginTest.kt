@@ -16,7 +16,7 @@
 
 @file:OptIn(ExperimentalCompilerApi::class)
 
-package com.bnorm.template
+package org.unibo.plugintest
 
 import com.tschuchort.compiletesting.JvmCompilationResult
 import com.tschuchort.compiletesting.KotlinCompilation
@@ -45,8 +45,8 @@ fun debug() = "Hello, World!"
 }
 
 fun compile(
-  sourceFiles: List<SourceFile>,
-  plugin: CompilerPluginRegistrar = TemplateCompilerRegistrar(),
+    sourceFiles: List<SourceFile>,
+    plugin: CompilerPluginRegistrar = TemplateCompilerRegistrar(),
 ): JvmCompilationResult {
   return KotlinCompilation().apply {
     sources = sourceFiles
@@ -56,8 +56,8 @@ fun compile(
 }
 
 fun compile(
-  sourceFile: SourceFile,
-  plugin: CompilerPluginRegistrar = TemplateCompilerRegistrar(),
+    sourceFile: SourceFile,
+    plugin: CompilerPluginRegistrar = TemplateCompilerRegistrar(),
 ): JvmCompilationResult {
   return compile(listOf(sourceFile), plugin)
 }

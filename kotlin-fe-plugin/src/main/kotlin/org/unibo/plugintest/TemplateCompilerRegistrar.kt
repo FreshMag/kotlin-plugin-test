@@ -16,7 +16,7 @@
 
 @file:OptIn(ExperimentalCompilerApi::class)
 
-package com.bnorm.template
+package org.unibo.plugintest
 
 import com.google.auto.service.AutoService
 import org.jetbrains.kotlin.backend.common.extensions.IrGenerationExtension
