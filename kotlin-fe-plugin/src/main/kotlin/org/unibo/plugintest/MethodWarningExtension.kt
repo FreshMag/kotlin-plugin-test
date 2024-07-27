@@ -3,6 +3,7 @@ package org.unibo.plugintest
 import org.jetbrains.kotlin.com.intellij.psi.PsiElement
 import org.jetbrains.kotlin.diagnostics.*
 import org.jetbrains.kotlin.fir.FirSession
+import org.jetbrains.kotlin.fir.analysis.checkers.MppCheckerKind
 import org.jetbrains.kotlin.fir.analysis.checkers.expression.ExpressionCheckers
 import org.jetbrains.kotlin.fir.analysis.checkers.expression.FirFunctionCallChecker
 import org.jetbrains.kotlin.fir.analysis.extensions.FirAdditionalCheckersExtension
@@ -14,14 +15,14 @@ object PluginErrors {
   val METHOD_CALLED by warning1<PsiElement, String>(SourceElementPositioningStrategies.CALL_ELEMENT_WITH_DOT)
 }
 
-object MethodCalledChecker : FirFunctionCallChecker() {
+object MethodCalledChecker : FirFunctionCallChecker(MppCheckerKind.Common) {
   override fun check(expression: FirFunctionCall,
                      context: CheckerContext,
                      reporter: DiagnosticReporter) {
     reporter.reportOn(
       expression.calleeReference.source,
       PluginErrors.METHOD_CALLED,
-      "${expression.calleeReference.name.identifier} was called",
+      "${expression.calleeReference.name.identifier} is called",
       context
     )
   }
