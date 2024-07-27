@@ -6,17 +6,18 @@ import com.tschuchort.compiletesting.KotlinCompilation
 import com.tschuchort.compiletesting.SourceFile
 import org.jetbrains.kotlin.compiler.plugin.ExperimentalCompilerApi
 import org.junit.Test
+import kotlin.test.assertContains
 import kotlin.test.assertEquals
 
 class MethodWarningTest {
   @Test
   fun `Method warning present`() {
-
+    val fileName = "main.kt"
     val sourceFile = SourceFile.kotlin(
-      "main.kt", """
-fun main() {
-  System.out.println("Hello world!")
-  println(debug())
+      fileName, """
+fun main() { 
+    System.out.println("Hello world!")
+    println(debug())
 }
 
 fun debug() = "Hello, World!"
@@ -30,6 +31,9 @@ fun tempStat() = "HEI"
       compilerPluginRegistrars = listOf(ExampleCompilerRegistrar())
       inheritClassPath = true
     }.compile()
+    assertContains(result.messages, "$fileName:2:16 println is called")
+    assertContains(result.messages, "$fileName:3:5 println is called")
+    assertContains(result.messages, "$fileName:3:13 debug is called")
     assertEquals(KotlinCompilation.ExitCode.OK, result.exitCode)
   }
 }
